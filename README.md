@@ -13,18 +13,18 @@ Before manipulation with database rename the files database.example.yml and secr
 Run test with 'rspec spec/exch_spec.rb' command in terminal inside app directory.
 
 ##### * How to run with docker
-	```
+```
 	docker-compose up --build
 	docker-compose run web rails db:create db:migrate
 	docker-compose run web bundle exec rails c
-	```
+```
 
 In case you get the DB collation version mismatch error:
 
-	```
+```
 	docker exec -it -u postgres <db_container_name> psql
 	ALTER DATABASE postgres REFRESH COLLATION VERSION;
-	```
+```
 
 ##### * How to work
 After installation and initialization of the application with or without Docker run the Rails console. Then using the `Exch.get_rates` command you can get USD/EUR rates from ECB site. This will get the rates in CSV format from ECB site, save it to CSV-file and then save rates to DB. After that you can exchange USD to EUR for specified date or date range.
