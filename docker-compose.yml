@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  db: 
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  web: 
+    build: .
+    volumes: 
+      - .:/code:cached
+    ports: 
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      RAILS_ENV: development
+      DATABASE_NAME: exchanger_development
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_HOST: db
+
+volumes:
+  db_data:

@@ -1,0 +1,8 @@
+.git
+.env
+vendor/bundle
+tmp
+public/assets
+public/uploads
+public/packs
+log/*.log
